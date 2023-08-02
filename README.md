@@ -6,7 +6,7 @@ NewsHub is a web application that provides users with the latest news from aroun
 ![image](Images/picture1.jpeg)
 
 - 🌝 **Top Loading Bar:**
-![image](Images/picture2.jpeg)
+![image](Images/picture2.png)
 # Key Features
 React Class-Based and Function-Based Components: The project is developed using both React class-based components as well as react-function based component, providing a solid foundation for managing state and behavior.
 
