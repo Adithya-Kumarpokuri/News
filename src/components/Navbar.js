@@ -8,7 +8,7 @@ const Navbar=()=>{
    useEffect(()=>{
     console.log(location.pathname)
    },[location])
-
+   
     return (
       <>
         <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">

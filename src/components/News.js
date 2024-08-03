@@ -18,7 +18,7 @@ const News=(props)=> {
   
   const updateNews=async()=> {
     props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&pageSize=${props.pageSize}&page=${pages}`;
+    const url =  `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=e66f12f3a10f40639fe41b1e9df1d903&pageSize=${props.pageSize}&page=${pages}`;
     props.setProgress(20);
     setLoading(true);
     let data = await fetch(url);
@@ -34,18 +34,17 @@ const News=(props)=> {
   
   useEffect(()=>{
      updateNews();
-     // eslint-disable-next-line 
   },[])
 
   const fetchMoreData=async ()=>{
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&pageSize=${props.pageSize}&page=${pages+1}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=e66f12f3a10f40639fe41b1e9df1d903&pageSize=${props.pageSize}&page=${pages}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     setTotalResults(parsedData.totalResults)
     setArticles(articles.concat(parsedData.articles))
     setPages(pages+1);
   }
-
+  
     return (
       <>
         <h2 className="text-center" style={{ marginBottom: "25px", marginTop: "81px"}}>
@@ -53,14 +52,14 @@ const News=(props)=> {
         </h2>
         {loading &&<Loading/>}
         <InfiniteScroll
-          dataLength={articles.length}
+          dataLength={articles?.length}
           next={fetchMoreData}
-          hasMore={articles.length < totalResults}
+          hasMore={articles?.length < totalResults}
           loader={<Loading/>}
         >
           <div className="container">
           <div className="row">
-            {articles.map((ele) => {
+            {articles?.length && articles.map((ele) => {
               return (
                 <div className="col-md-4" key={ele.url}>
                   <NewsItem source={ele.source.name} title={ele.title} description={ele.description}
